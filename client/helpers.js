@@ -61,6 +61,7 @@ Template.chat_page.events({
             // put the messages array onto the chat object
             chat.messages = msgs;
             // update the chat object in the database.
+            //TODO: update via method
             Chats.update(chat._id, chat);
         }
     }
