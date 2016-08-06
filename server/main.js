@@ -30,6 +30,6 @@ Meteor.publish("chatByOtherUserId", function(otherUserId) {
     console.log("no chat id");
   }
 });
-Meteor.publish("users", function() {
-  return Meteor.users.find();
+Meteor.publish("allUserData", function () {
+  return Meteor.users.find({}, {fields: {'profile': 1}});
 });

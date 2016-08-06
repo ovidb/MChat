@@ -1,5 +1,5 @@
 Meteor.methods({
-	updateChat:function(chatId, text) {
+	updateChat:function(chatId, message) {
 		// see if we can find a chat object in the database
 		// to which we'll add the message
 		var chat = Chats.findOne({
@@ -13,9 +13,7 @@ Meteor.methods({
 				// is a good idea to insert data straight from the form
 				// (i.e. the user) into the database?? certainly not.
 				// push adds the message to the end of the array
-				msgs.push({
-						text: text
-				});
+				msgs.push(message);
 				// put the messages array onto the chat object
 				chat.messages = msgs;
 				// update the chat object in the database.

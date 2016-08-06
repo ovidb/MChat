@@ -22,6 +22,15 @@ Template.available_user.helpers({
     }
 });
 
+Template.chat_message.helpers({
+  getOtherUsername: function(userId) {
+    user = Meteor.users.findOne({
+        _id: userId
+    });
+    if(!user) {return; } //no user giving up
+    return user.profile.username;
+  },
+});
 
 Template.chat_page.helpers({
     messages: function() {
@@ -40,6 +49,16 @@ Template.chat_page.events({
     'submit .js-send-chat': function(event) {
         // stop the form from triggering a page reload
         event.preventDefault();
-        Meteor.call("updateChat", Session.get("chatId"), event.target.chat.value);
+        chatId = Session.get("chatId");
+        var message = {};
+        message.from = Meteor.userId();
+        message.text = event.target.chat.value;
+        Meteor.call("updateChat", chatId, message, function(err,res) {
+          if(err) {
+            console.log("js-send-chat evnet err" + err);
+          } else {
+            event.target.chat.value = "";
+          }
+        });
     }
 });

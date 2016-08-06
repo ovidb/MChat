@@ -20,10 +20,15 @@ Router.route('/chat/:_id', {
 
   waitOn: function () {
     // return one handle, a function, or an array
-    return Meteor.subscribe('chatByOtherUserId', this.params._id);
+    return [
+      Meteor.subscribe('chatByOtherUserId', this.params._id),
+      Meteor.subscribe('allUserData')
+    ]
   },
 
   action: function () {
+    Session.set("otherUserId", this.params._id);
+
     var chat = Chats.findOne();
     if (chat) {
       Session.set("chatId", chat._id);
