@@ -6,7 +6,7 @@ Router.configure({
 Router.route('/', {
   waitOn: function () {
     // return one handle, a function, or an array
-    return Meteor.subscribe('users');
+    return Meteor.subscribe('allUserData');
   },
   action:function () {
     console.log("rendering root /");
