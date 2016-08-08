@@ -22,7 +22,8 @@ Router.route('/chat/:_id', {
     // return one handle, a function, or an array
     return [
       Meteor.subscribe('chatByOtherUserId', this.params._id),
-      Meteor.subscribe('allUserData')
+      Meteor.subscribe('allUserData'),
+      Meteor.subscribe('emojis')
     ]
   },
 

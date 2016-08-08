@@ -90,7 +90,7 @@
 <template name="chat_message">
   {{#if isMyUser from}}
   <div class="row alert alert-danger">
-    <div class="col-xs-10 text-right"><h2>{{text}}</h2></div>
+    <div class="col-xs-10 text-right"><h2>{{ > emoji text}}</h2></div>
     <div class="col-xs-2 text-center">
       <div class="row"><img class="img-circle avatar_img" src="/{{getProfilePicture from}}" /></div>
       <div class="row">{{getOtherUsername from}}</div>
@@ -102,7 +102,7 @@
       <div class="row"><img class="img-circle avatar_img" src="/{{getProfilePicture from}}" /></div>
       <div class="row">{{getOtherUsername from}}</div>
     </div>
-    <div class="col-xs-10"><h2>{{text}}</h2></div>
+    <div class="col-xs-10"><h2>{{ > emoji text}}</h2></div>
   </div>
   {{/if}}
 </template>
