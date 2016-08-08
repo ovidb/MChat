@@ -9,14 +9,14 @@
 <template name="ApplicationLayout">
     {{> yield "header"}}
 
-    <div class="container">
+    <div class="container margin-top-50">
         {{> yield "main"}}
     </div>
 </template>
 
 <!-- top level template for the nav bar -->
 <template name="navbar">
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">
@@ -65,7 +65,6 @@
 
 <!-- Top level template for the chat page -->
 <template name="chat_page">
-    <h2>Type in the box below to send a message!</h2>
     <div class="row">
         <div class="col-md-12">
             <div class="well well-lg">
@@ -73,14 +72,18 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <form class="js-send-chat">
-                <input class="input" type="text" name="chat" placeholder="type a message here...">
-                <button class="btn btn-default">send</button>
-            </form>
-        </div>
-    </div>
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="container">
+        <form class="js-send-chat">
+          <div class="input-group input-group-lg">
+            <input name="chat" type="text" class="form-control" placeholder="type text here..." aria-describedby="sizing-addon1">
+            <span class="input-group-btn">
+              <button class="btn btn-default"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </nav>
 </template>
 
 <!-- simple template that displays a message -->
