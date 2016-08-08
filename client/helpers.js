@@ -23,6 +23,20 @@ Template.available_user.helpers({
 });
 
 Template.chat_message.helpers({
+  isMyUser: function(userId) {
+      if (userId == Meteor.userId()) {
+          return true;
+      } else {
+          return false;
+      }
+  },
+  getProfilePicture: function(userId) {
+    user = Meteor.users.findOne({
+      _id: userId
+    });
+    if(!user) {return;} // no user giving up
+    return user.profile.avatar;
+  },
   getOtherUsername: function(userId) {
     user = Meteor.users.findOne({
         _id: userId
